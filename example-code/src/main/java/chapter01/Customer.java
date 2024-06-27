@@ -29,7 +29,7 @@ public class Customer {
             Rental each = (Rental) rentals.nextElement();
 
             // 각 영화에 대한 요금 결정
-            double thisAmount = each.getFeeForEachMovie();
+            double thisAmount = each.getFeeEachMovie();
 
             // 포인트 추가
             frequentRenterPoints = each.getRenterPoint();
