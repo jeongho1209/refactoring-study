@@ -2,8 +2,8 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 public class Customer {
-    private String _name;
-    private Vector _rentals = new Vector();
+    private final String _name;
+    private final Vector _rentals = new Vector();
 
     public Customer(String name) {
         _name = name;
@@ -34,13 +34,13 @@ public class Customer {
 
             // 이 대여에 대한 요금 계산 결과 표시
             result += "\t" + each.getMovie().getTitle() + "\t" +
-                    String.valueOf(thisAmount) + "\n";
+                    thisAmount + "\n";
             totalAmount += thisAmount;
         }
 
         // 풋터(footer) 추가
-        result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) +
+        result += "Amount owed is " + totalAmount + "\n";
+        result += "You earned " + frequentRenterPoints +
                 "frequent renter points";
         return result;
     }
