@@ -46,4 +46,15 @@ public class Movie {
         }
         return result;
     }
+
+    public int getRenterPoints(int daysRented) {
+        // 최신을 이틀 이상 대여하는 경우 추가 포인트 제공
+        boolean isNewReleaseMovie = this.getPriceCode() == Movie.NEW_RELEASE;
+        boolean isRentedDayAfterDay = daysRented > 1;
+        if (isNewReleaseMovie && isRentedDayAfterDay) {
+            return 2;
+        }
+
+        return 1;
+    }
 }

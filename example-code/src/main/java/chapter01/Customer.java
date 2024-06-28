@@ -20,30 +20,43 @@ public class Customer {
     }
 
     public String statement() {
-        double totalAmount = 0;
-        int frequentRenterPoints = 0;
         Enumeration rentals = this._rentals.elements();
         String result = "chapter01.Rental Record for " + this.getName() + "\n";
 
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
 
-            // 각 영화에 대한 요금 결정
-            double thisAmount = each.getFeeEachMovie();
-
-            // 포인트 추가
-            frequentRenterPoints = each.getRenterPoint();
-
             // 이 대여에 대한 요금 계산 결과 표시
             result += "\t" + each.getMovie().getTitle() + "\t" +
-                    thisAmount + "\n";
-            totalAmount += thisAmount;
+                    each.getFeeEachMovie() + "\n";
         }
 
         // 풋터(footer) 추가
-        result += "Amount owed is " + totalAmount + "\n";
-        result += "You earned " + frequentRenterPoints +
+        result += "Amount owed is " + getTotalAmount(rentals) + "\n";
+        result += "You earned " + getTotalRenterPoints(rentals) +
                 "frequent renter points";
+        return result;
+    }
+
+    private int getTotalRenterPoints(Enumeration rentals) {
+        int result = 0;
+        while (rentals.hasMoreElements()) {
+            Rental each = (Rental) rentals.nextElement();
+
+            result += each.getRenterPoints();
+        }
+
+        return result;
+    }
+
+    private double getTotalAmount(Enumeration rentals) {
+        double result = 0;
+        while (rentals.hasMoreElements()) {
+            Rental each = (Rental) rentals.nextElement();
+
+            result += each.getFeeEachMovie();
+        }
+
         return result;
     }
 }
