@@ -18,7 +18,7 @@ public class Rental {
     }
 
     public double getFeeEachMovie() {
-        return this._movie.getFeeEachMovie(_daysRented);
+        return this._movie.getCharge(_daysRented);
     }
 
     public int getRenterPoints() {
